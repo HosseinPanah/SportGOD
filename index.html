@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101311">
+  <meta name="description" content="داشبورد تعاملی برنامه تمرینی هفتگی B">
+  <title>برنامه تمرینی هفتگی | برنامه B</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="رفتن به ابتدای داشبورد">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 40 40" role="presentation"><path d="M7 13h5v14H7zM28 13h5v14h-5zM12 17h16v6H12zM5 10h3v20H5zM32 10h3v20h-3z" fill="currentColor"/><path d="M20 5v30" stroke="#c9ef74" stroke-width="2" stroke-linecap="round" opacity=".9"/></svg>
+      </span>
+      <span class="brand-copy"><strong>فُرم</strong><small>باشگاه شخصی تو</small></span>
+    </a>
+    <div class="topbar-actions">
+      <span class="offline-pill"><i></i> قابل استفاده آفلاین</span>
+      <button class="icon-button" id="resetAllBtn" type="button" aria-label="بازنشانی کل برنامه" title="بازنشانی برنامه">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 2.64-6.36L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l3 2"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="top" class="page-wrap">
+    <section class="hero" aria-labelledby="pageTitle">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="eyebrow-line"></span> باشگاه شخصی <span class="eyebrow-dot"></span> چرخه تمرینی هفتگی</div>
+        <h1 id="pageTitle">برنامه تمرینی <em>هفتگی</em></h1>
+        <p class="hero-subtitle">برنامه B <span class="hero-separator">/</span> پنج روز تمرین هدفمند، یک مسیر رو به جلو.</p>
+        <div class="hero-meta">
+          <span><b class="meta-icon">۰۵</b> روز تمرین</span>
+          <span><b class="meta-icon" id="heroExerciseCount">۴۰</b> حرکت اختصاصی</span>
+          <span><b class="meta-icon" id="heroSetCount">۱۳۴</b> ست برنامه‌ریزی‌شده</span>
+        </div>
+      </div>
+      <div class="hero-progress-card">
+        <div class="hero-progress-top"><span>پیشرفت هفتگی</span><span class="live-dot">وضعیت زنده</span></div>
+        <div class="progress-ring-wrap">
+          <svg class="progress-ring" viewBox="0 0 144 144" aria-hidden="true">
+            <circle class="ring-track" cx="72" cy="72" r="60"></circle>
+            <circle class="ring-value" id="weeklyRing" cx="72" cy="72" r="60"></circle>
+          </svg>
+          <div class="ring-center"><strong id="weeklyPercent">۰٪</strong><span>تکمیل برنامه</span></div>
+        </div>
+        <div class="hero-progress-bottom"><span id="heroCompleted">۰ حرکت انجام‌شده</span><span id="heroRemaining">۴۰ حرکت باقی‌مانده</span></div>
+      </div>
+      <div class="hero-orbit hero-orbit-a" aria-hidden="true"></div>
+      <div class="hero-orbit hero-orbit-b" aria-hidden="true"></div>
+    </section>
+
+    <section class="week-nav-section" aria-label="انتخاب روز تمرین">
+      <div class="section-kicker"><span>نقشه هفته</span><span class="section-kicker-line"></span><small>برای رفتن به هر جلسه انتخاب کن</small></div>
+      <nav class="week-nav" id="weekNav">
+        <button class="day-tab is-active" data-day="1" type="button"><span class="tab-number">۰۱</span><span class="tab-name">بالاتنه ۱</span><span class="tab-state" aria-hidden="true"></span></button>
+        <button class="day-tab" data-day="2" type="button"><span class="tab-number">۰۲</span><span class="tab-name">پایین‌تنه ۱</span><span class="tab-state" aria-hidden="true"></span></button>
+        <button class="day-tab" data-day="3" type="button"><span class="tab-number">۰۳</span><span class="tab-name">بالاتنه ۲</span><span class="tab-state" aria-hidden="true"></span></button>
+        <button class="day-tab" data-day="4" type="button"><span class="tab-number">۰۴</span><span class="tab-name">شکم و هوازی</span><span class="tab-state" aria-hidden="true"></span></button>
+        <button class="day-tab" data-day="5" type="button"><span class="tab-number">۰۵</span><span class="tab-name">بالاتنه ۳</span><span class="tab-state" aria-hidden="true"></span></button>
+      </nav>
+    </section>
+
+    <div class="workspace">
+      <section class="workout-column" aria-label="جلسات تمرینی">
+        <div class="list-toolbar">
+          <div class="toolbar-title"><span class="toolbar-mark"></span><div><h2>جلسات تمرین</h2><p>حرکت‌ها را یکی‌یکی ثبت کن و پیشرفتت را ببین.</p></div></div>
+          <div class="toolbar-controls">
+            <label class="search-box" for="exerciseSearch">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.6"/><path d="m16 16 4.5 4.5"/></svg>
+              <input id="exerciseSearch" type="search" placeholder="جستجوی حرکات..." autocomplete="off">
+              <kbd>/</kbd>
+            </label>
+            <label class="day-select-wrap" for="dayFilter"><span class="sr-only">فیلتر روز تمرین</span><select id="dayFilter" class="day-select"><option value="all">همه روزها</option></select></label>
+            <div class="filter-group" role="group" aria-label="فیلتر وضعیت حرکت">
+              <button type="button" class="filter-btn is-selected" data-filter="all">همه</button>
+              <button type="button" class="filter-btn" data-filter="todo">باقی‌مانده</button>
+              <button type="button" class="filter-btn" data-filter="done">انجام‌شده</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="search-status" id="searchStatus" aria-live="polite"></div>
+        <div id="daysContainer" class="days-container"></div>
+        <div class="empty-state" id="emptyState" hidden>
+          <span class="empty-icon">⌕</span>
+          <strong>حرکتی پیدا نشد</strong>
+          <p>عبارت جستجو یا فیلتر انتخابی را تغییر بده.</p>
+          <button class="text-button" id="clearSearchBtn" type="button">پاک کردن جستجو و فیلتر</button>
+        </div>
+      </section>
+
+      <aside class="sidebar" aria-label="ابزارهای تمرین">
+        <section class="timer-panel" aria-labelledby="timerTitle">
+          <div class="panel-heading"><div><span class="panel-overline">بین ست‌ها</span><h2 id="timerTitle">تایمر استراحت</h2></div><span class="timer-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 1.5M9 2h6M12 2v3"/></svg></span></div>
+          <div class="timer-face" id="timerFace">
+            <svg viewBox="0 0 220 220" class="timer-ring" aria-hidden="true"><circle cx="110" cy="110" r="96" class="timer-track"/><circle cx="110" cy="110" r="96" class="timer-progress" id="timerProgress"/></svg>
+            <div class="timer-readout"><strong id="timerDisplay">۰۱:۳۰</strong><span id="timerState">آماده شروع</span></div>
+          </div>
+          <div class="timer-presets" role="group" aria-label="زمان‌های پیشنهادی">
+            <button type="button" class="preset-btn" data-seconds="45">۴۵ ثانیه</button>
+            <button type="button" class="preset-btn" data-seconds="60">۶۰ ثانیه</button>
+            <button type="button" class="preset-btn is-active" data-seconds="90">۹۰ ثانیه</button>
+          </div>
+          <div class="timer-actions">
+            <button class="timer-main-btn" id="timerStartBtn" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7z"/></svg><span>شروع</span></button>
+            <button class="timer-secondary-btn" id="timerResetBtn" type="button" aria-label="بازنشانی تایمر" title="بازنشانی"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.34-5.66L4 8.5"/><path d="M4 4v4.5h4.5"/></svg></button>
+          </div>
+          <label class="auto-timer-row"><span class="toggle"><input id="autoTimerToggle" type="checkbox"><i></i></span><span><b>شروع خودکار استراحت</b><small>پس از تکمیل هر حرکت</small></span></label>
+          <p class="timer-note" id="timerNote">با تکمیل یک حرکت، استراحت بعدی را شروع کن.</p>
+        </section>
+
+        <section class="stats-panel" aria-labelledby="statsTitle">
+          <div class="panel-heading compact"><div><span class="panel-overline">گزارش عملکرد</span><h2 id="statsTitle">آمار این هفته</h2></div><span class="stats-badge">B</span></div>
+          <div class="stat-line"><div class="stat-label"><span class="stat-symbol completed-symbol">✓</span><span>حرکات انجام‌شده</span></div><strong id="statCompleted">۰ <small>از ۴۰</small></strong></div>
+          <div class="stat-line"><div class="stat-label"><span class="stat-symbol remaining-symbol">↗</span><span>حرکات باقی‌مانده</span></div><strong id="statRemaining">۴۰</strong></div>
+          <div class="stat-line"><div class="stat-label"><span class="stat-symbol sets-symbol">▤</span><span>ست‌های تکمیل‌شده</span></div><strong id="statSets">۰ <small>از ۱۳۴</small></strong></div>
+          <div class="stats-divider"></div>
+          <div class="mini-week" id="miniWeek"></div>
+          <div class="stats-foot"><span class="stats-foot-dot"></span><span id="statsFootText">هر حرکت کامل‌شده، یک قدم جلوتر.</span></div>
+        </section>
+
+        <section class="guide-panel">
+          <div class="guide-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 6v5c0 5 3.4 8.3 8 10 4.6-1.7 8-5 8-10V6l-8-3Z"/><path d="m8.5 12 2.2 2.2 4.8-5"/></svg></div>
+          <div><strong>با فرم درست تمرین کن</strong><p>کیفیت اجرای حرکت از سنگین‌تر کردن وزنه مهم‌تر است.</p></div>
+        </section>
+      </aside>
+    </div>
+
+    <footer class="footer"><span>فُرم <b>·</b> برنامه تمرینی B</span><span>پیشرفت، حاصل تکرارهای درست است.</span></footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
